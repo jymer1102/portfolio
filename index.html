@@ -104,5 +104,19 @@
             });
         });
     </script>
+<script>
+    window.addEventListener('scroll', function() {
+        const indicator = document.getElementById('scroll-indicator');
+        
+        // Safety check to make sure the element exists on this page
+        if (indicator) {
+            if (window.scrollY > 10) {
+                indicator.style.opacity = '0';
+            } else {
+                indicator.style.opacity = '0.6';
+            }
+        }
+    });
+</script>
 </body>
 </html>
