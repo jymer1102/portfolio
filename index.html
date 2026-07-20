@@ -127,32 +127,7 @@
         });
     </script>
 
-    <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            const favicon = document.getElementById('animated-favicon');
-            if (!favicon) return;
-
-            const canvas = document.createElement('canvas');
-            canvas.width = 32;
-            canvas.height = 32;
-            const ctx = canvas.getContext('2d');
-
-            const img = new Image();
-            img.src = favicon.href;
-
-            img.onload = () => {
-                function forceAnimationLoop() {
-                    ctx.clearRect(0, 0, 32, 32);
-                    ctx.drawImage(img, 0, 0, 32, 32);
-                    
-                    // Direct string conversion forces Chrome to update the frame
-                    favicon.href = canvas.toDataURL('image/png');
-                    
-                    requestAnimationFrame(forceAnimationLoop);
-                }
-                forceAnimationLoop();
-            };
-        });
-    </script>
+   <script src="{{ '/favicon-animation.js' | relative_url }}"></script>
+    
 </body>
 </html>
