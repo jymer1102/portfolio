@@ -807,17 +807,12 @@ footer {
     }
 }
 
-/* Custom default cursor for the entire site */
+/* Custom default cursor */
 html, body {
-  cursor: url("{{ '/images/cursor/custom-j-cursor.png' | relative_url }}"), default;
+  cursor: url('../../images/cursor/custom-j-cursor.png'), default;
 }
 
-/* Custom pointer cursor for clickable elements */
-a, 
-button, 
-.nav-cta, 
-.btn-primary, 
-select, 
-input[type="submit"] {
-  cursor: url("{{ '/images/cursor/custom-j-cursor-pointer.png' | relative_url }}"), pointer;
+/* Custom pointer cursor */
+a, button, .nav-cta, .btn-primary, select, input[type="submit"] {
+  cursor: url('../../images/cursor/custom-j-cursor-pointer.png'), pointer;
 }
