@@ -119,8 +119,7 @@ button:focus-visible {
    3. Utility / Shared Patterns
    -------------------------------------------------------------------------- */
 
-/* "Eyebrow" tags styled like a file path / code comment — ties the visual
-   language back to the developer subject matter instead of generic labels */
+/* "Eyebrow" tags styled like a file path / code comment */
 .eyebrow {
     display: inline-flex;
     align-items: center;
@@ -147,7 +146,7 @@ button:focus-visible {
     -webkit-text-fill-color: transparent;
 }
 
-/* Blinking terminal cursor used once, in the hero — the page's one signature flourish */
+/* Blinking terminal cursor */
 .cursor {
     display: inline-block;
     width: 0.5ch;
@@ -250,10 +249,6 @@ nav {
 /* --------------------------------------------------------------------------
    5. Home Banner + Hero
    -------------------------------------------------------------------------- */
-
-/* Full-width masthead banner at the very top of the homepage. The fixed nav
-   floats on top of it (blurred), and it fades into the page background at
-   the bottom edge so it feels like part of the page, not a pasted-in image. */
 .home-banner {
     position: relative;
     width: 100%;
@@ -339,11 +334,13 @@ section:last-child {
 
 .split-section {
     display: flex;
+    flex-wrap: wrap; /* Updated to allow grid mapping on mid-to-large displays */
     gap: 28px;
 }
 
 .split-card {
-    flex: 1;
+    flex: 1 1 calc(50% - 28px); /* Updated to clean up 2-column distribution natively */
+    min-width: 300px;
     background: linear-gradient(160deg, var(--bg-card-from), var(--bg-card-to));
     border: 1px solid var(--border);
     padding: 38px;
@@ -393,7 +390,6 @@ section:last-child {
 .page-header {
     padding: 160px 24px 20px;
     text-align: center;
-    /* Add these three lines to enable ordering controls */
     display: flex;
     flex-direction: column;
     align-items: center; 
@@ -407,13 +403,13 @@ section:last-child {
 .page-header .glow-text {
     font-size: clamp(2rem, 4.5vw, 3rem);
     margin-bottom: 14px;
-    order: 2; /* Title sits second */
+    order: 2;
 }
 
 .page-header .subtitle {
     color: var(--text-2);
     font-size: 1.05rem;
-    order: 3; /* Subtitle sits third */
+    order: 3;
 }
 
 /* --------------------------------------------------------------------------
@@ -574,7 +570,6 @@ section:last-child {
     overflow: hidden;
 }
 
-/* Logos keep their natural proportions — never stretched or cropped */
 .project-img {
     width: 100%;
     height: 100%;
@@ -587,15 +582,12 @@ section:last-child {
     background: rgba(255, 255, 255, 0.06);
 }
 
-/* Custom glowing per-app border tints */
 .icon-nova   { border-color: rgba(186, 50, 250, 0.25); box-shadow: 0 0 16px rgba(186, 50, 250, 0.08); }
 .icon-pet    { border-color: rgba(43, 156, 183, 0.25); box-shadow: 0 0 16px rgba(43, 156, 183, 0.08); }
 .icon-blob   { border-color: rgba(46, 204, 113, 0.25);  box-shadow: 0 0 16px rgba(46, 204, 113, 0.08); }
 .icon-tag    { border-color: rgba(155, 89, 182, 0.25);  box-shadow: 0 0 16px rgba(155, 89, 182, 0.08); }
-.icon-zombie { border-color: rgba(255, 165, 0, 0.25);  box-shadow: 0 0 16px rgba(255, 165, 0, 0.08); }
+.icon-zombie { border-color: rgba(255, 165, 0, 0.25);   box-shadow: 0 0 16px rgba(255, 165, 0, 0.08); }
 
-/* Fallback shown automatically if a logo image fails to load, or for
-   projects (like Zombie Shooter) that don't have artwork yet */
 .icon-fallback {
     color: var(--red);
     text-shadow: 0 0 12px rgba(231, 76, 60, 0.45);
@@ -684,6 +676,10 @@ footer {
         flex-direction: column;
     }
 
+    .split-card {
+        width: 100%;
+    }
+
     .project-card {
         flex-direction: column;
         align-items: flex-start;
@@ -735,9 +731,7 @@ footer {
     }
 }
 
-/* Extra breathing room on desktop: pushes the "Hi, I'm jymer1102" intro
-   section below the fold so its fade-up animation actually plays on
-   scroll, and gives the whole layout a more spread-out, premium feel. */
+/* Desktop customization */
 @media (min-width: 993px) {
     .container {
         padding-top: 170px;
@@ -765,20 +759,18 @@ footer {
         padding: 46px;
     }
 
-    /* Force real one-at-a-time reveals on desktop: stack the split cards
-       instead of side-by-side, and give project cards enough breathing
-       room that each one has to be scrolled to individually. */
+    /* Stack sections clean on massive viewports */
     .split-section {
-        flex-direction: column;
-        max-width: 640px;
+        max-width: 1120px; /* Expands to full container boundary on ultra-wide screens */
         margin: 0 auto;
-        gap: 140px;
+        gap: 28px;
     }
 
     .project-grid {
         gap: 260px;
     }
 }
+
 /* --------------------------------------------------------------------------
    13. Scroll Indicator
    -------------------------------------------------------------------------- */
@@ -799,9 +791,6 @@ footer {
     animation: indicatorPulse 2s infinite var(--ease);
 }
 
-/* A running animation on opacity out-ranks a plain inline style, so hiding
-   the indicator via JS needs !important + a paused animation to actually
-   take effect. */
 #scroll-indicator.is-hidden {
     opacity: 0 !important;
     animation-play-state: paused;
@@ -814,6 +803,6 @@ footer {
     }
     50% {
         opacity: 0.7;
-        transform: translate(-50%, -6px); /* Clean micro-bounce */
+        transform: translate(-50%, -6px);
     }
 }
