@@ -945,13 +945,15 @@ footer {
     animation: indicatorPulse 2s infinite var(--ease);
 }
 
+/* In-flow positioning beneath the connect links panel, pushed down into the screen gap */
 .connect-section #scroll-indicator {
     position: relative;
     bottom: auto;
     left: auto;
     transform: none;
     text-align: center;
-    margin: 32px auto 0;
+    margin-top: clamp(80px, 18vh, 160px);
+    margin-bottom: 20px;
     animation: connectIndicatorPulse 2s infinite var(--ease);
 }
 
