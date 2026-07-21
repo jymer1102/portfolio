@@ -83,10 +83,17 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({
-            once: true,
+            once: false,
+            mirror: true,
             duration: 900,
             easing: 'ease-out-cubic'
         });
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY === 0) {
+                AOS.refresh();
+            }
+        }, { passive: true });
     </script>
 
     <script>
