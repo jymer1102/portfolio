@@ -181,6 +181,19 @@
             });
         });
     </script>
+  
+    <script>
+    // Tracks mouse position across all card & form containers for the radial glow
+    document.querySelectorAll('.connect-panel, .form-container, .split-card, .project-card').forEach(container => {
+        container.addEventListener('mousemove', (e) => {
+            const rect = container.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            container.style.setProperty('--mx', `${x}px`);
+            container.style.setProperty('--my', `${y}px`);
+        });
+    });
+</script>
 
     <script src="{{ '/favicon-animation.js' | relative_url }}"></script>
     
