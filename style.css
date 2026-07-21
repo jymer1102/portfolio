@@ -633,19 +633,16 @@ section:last-child {
    10. Connect Page & Contact Form
    -------------------------------------------------------------------------- */
 
-/* Section wrapper to keep initial panel centered in viewport */
+/* Links Section */
 .connect-section {
-    min-height: calc(100vh - 220px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    width: 100%;
 }
 
 /* Links Container */
 .connect-panel {
     max-width: 620px;
     width: 100%;
-    margin: 0 auto 40px auto;
+    margin: 0 auto;
     background: linear-gradient(160deg, var(--bg-card-from), var(--bg-card-to));
     border-radius: var(--radius-lg);
     padding: 48px;
@@ -706,10 +703,9 @@ section:last-child {
     text-shadow: 0 0 10px var(--accent-glow);
 }
 
-/* Contact Form Section (Naturally spaced just below viewport) */
+/* Contact Form Section */
 .contact-section {
-    margin-top: 25vh;
-    padding-bottom: 80px;
+    width: 100%;
 }
 
 /* Outer Form Container */
