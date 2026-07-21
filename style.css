@@ -122,7 +122,7 @@ button:focus-visible {
     max-width: var(--container-w);
     width: 100%;
     margin: 0 auto;
-    padding: 100px 24px 60px;
+    padding: 0 24px 60px;
 }
 
 /* --------------------------------------------------------------------------
@@ -437,12 +437,15 @@ section:last-child {
    7. Page Header (Creations / Connect)
    -------------------------------------------------------------------------- */
 .page-header {
-    padding: 160px 24px 20px;
+    min-height: 100vh;
+    padding: 120px 24px 60px;
     text-align: center;
     display: flex;
     flex-direction: column;
-    align-items: center; 
+    align-items: center;
+    justify-content: center;
     width: 100%;
+    position: relative;
 }
 
 .page-header .eyebrow {
@@ -633,9 +636,15 @@ section:last-child {
    10. Connect Page & Contact Form
    -------------------------------------------------------------------------- */
 
-/* Links Section */
+/* Step 1: Links Section */
 .connect-section {
     width: 100%;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 180px;
 }
 
 /* Links Container */
@@ -703,9 +712,15 @@ section:last-child {
     text-shadow: 0 0 10px var(--accent-glow);
 }
 
-/* Contact Form Section */
+/* Step 2: Contact Form Section */
 .contact-section {
     width: 100%;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
 }
 
 /* Outer Form Container */
@@ -845,6 +860,7 @@ select.form-control option {
     0%, 45% { opacity: 1; }
     50%, 100% { opacity: 0; }
 }
+
 /* --------------------------------------------------------------------------
    11. Footer
    -------------------------------------------------------------------------- */
@@ -899,11 +915,7 @@ footer {
     }
 
     .container {
-        padding: 90px 18px 40px;
-    }
-
-    .page-header {
-        padding-top: 130px;
+        padding: 0 18px 40px;
     }
 
     .connect-panel,
@@ -924,7 +936,6 @@ footer {
 
 @media (min-width: 993px) {
     .container {
-        padding-top: 170px;
         padding-bottom: 100px;
     }
 
@@ -933,8 +944,7 @@ footer {
         padding-bottom: 160px;
     }
 
-    section,
-    .connect-section {
+    section {
         margin-bottom: 200px;
     }
 
@@ -960,6 +970,7 @@ footer {
         gap: 260px;
     }
 }
+
 /* --------------------------------------------------------------------------
    13. Scroll Indicator, Cursors & Modals
    -------------------------------------------------------------------------- */
@@ -980,16 +991,12 @@ footer {
     animation: indicatorPulse 2s infinite var(--ease);
 }
 
-/* In-flow positioning beneath the connect links panel, pushed down into the screen gap */
-.connect-section #scroll-indicator {
-    position: relative;
-    bottom: auto;
-    left: auto;
-    transform: none;
-    text-align: center;
-    margin-top: clamp(80px, 18vh, 160px);
-    margin-bottom: 20px;
-    animation: connectIndicatorPulse 2s infinite var(--ease);
+.page-header #scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
 }
 
 #scroll-indicator.is-hidden {
@@ -1008,23 +1015,12 @@ footer {
     }
 }
 
-@keyframes connectIndicatorPulse {
-    0%, 100% {
-        opacity: 0.3;
-        transform: translateY(0);
-    }
-    50% {
-        opacity: 0.7;
-        transform: translateY(-6px);
-    }
-}
-
 html, body {
-  cursor: url('/jymer1102_portfolio/images/cursor/custom-j-cursor.png') 0 0, default;
+    cursor: url('/jymer1102_portfolio/images/cursor/custom-j-cursor.png') 0 0, default;
 }
 
 a, button, .nav-cta, .btn-primary, select, input[type="submit"], .submit-btn {
-  cursor: url('/jymer1102_portfolio/images/cursor/custom-j-cursor-pointer.png') 0 0, pointer;
+    cursor: url('/jymer1102_portfolio/images/cursor/custom-j-cursor-pointer.png') 0 0, pointer;
 }
 
 /* Phone Action Modal */
