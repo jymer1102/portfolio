@@ -78,7 +78,7 @@ document.documentElement.setAttribute('data-theme', 'dark');
 <ul class="connect-list">
 <li>
 <span class="connect-label"><i class="fa-solid fa-at"></i> Email</span>
-<a href="mailto:theoneandonly@jymer1102.me" class="connect-value">theoneandonly@jymer1102.me</a>
+<a href="mailto:theoneandonly@jymer1102.me" id="email-link" class="connect-value">theoneandonly@jymer1102.me</a>
 </li>
 <li>
 <span class="connect-label"><i class="fa-solid fa-phone"></i> Phone</span>
@@ -163,6 +163,22 @@ document.documentElement.setAttribute('data-theme', 'dark');
 </div>
 </div>
 
+<div id="email-modal" class="phone-modal">
+<div class="phone-modal-content">
+<h3>Contact via Email</h3>
+<p>Choose an option below:</p>
+<div class="phone-modal-actions">
+<a href="mailto:theoneandonly@jymer1102.me" class="modal-btn call-btn">
+<i class="fa-solid fa-envelope"></i> Open Mail App
+</a>
+<button id="copy-email-btn" type="button" class="modal-btn text-btn">
+<i class="fa-solid fa-copy"></i> Copy Email
+</button>
+</div>
+<button id="close-email-modal" class="modal-close-btn">Cancel</button>
+</div>
+</div>
+
 
 <footer>jymer1102 — built with care.</footer>
 
@@ -194,6 +210,41 @@ phoneModal.addEventListener('click', (e) => {
 if (e.target === phoneModal) {
 phoneModal.classList.remove('is-visible');
 }
+});
+
+const emailLink = document.getElementById('email-link');
+const emailModal = document.getElementById('email-modal');
+const closeEmailModal = document.getElementById('close-email-modal');
+const copyEmailBtn = document.getElementById('copy-email-btn');
+const emailAddress = 'theoneandonly@jymer1102.me';
+const copyEmailDefaultHTML = copyEmailBtn.innerHTML;
+
+emailLink.addEventListener('click', (e) => {
+e.preventDefault();
+emailModal.classList.add('is-visible');
+});
+
+closeEmailModal.addEventListener('click', () => {
+emailModal.classList.remove('is-visible');
+});
+
+emailModal.addEventListener('click', (e) => {
+if (e.target === emailModal) {
+emailModal.classList.remove('is-visible');
+}
+});
+
+copyEmailBtn.addEventListener('click', async () => {
+try {
+await navigator.clipboard.writeText(emailAddress);
+copyEmailBtn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+} catch (err) {
+console.error('Copy failed:', err);
+copyEmailBtn.innerHTML = '<i class="fa-solid fa-xmark"></i> Copy failed';
+}
+setTimeout(() => {
+copyEmailBtn.innerHTML = copyEmailDefaultHTML;
+}, 1600);
 });
 </script>
 
